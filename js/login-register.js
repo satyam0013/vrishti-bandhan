@@ -9,7 +9,7 @@ function showForm(type) {
   document.getElementById("loginForm").addEventListener("submit", async function (e) {
     e.preventDefault();
   
-    const res = await fetch("http://localhost:3000/api/login", {
+    const res = await fetch('https://vrishti-backend.onrender.com/api/wastes', {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

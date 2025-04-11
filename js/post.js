@@ -3,7 +3,7 @@ document.getElementById("postForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const form = e.target;
   const formData = new FormData(form);
-  const res = await fetch("http://localhost:3000/api/waste", {
+  const res = await fetch('https://vrishti-backend.onrender.com/api/wastes', {
     method: "POST",
     body: formData,
   });

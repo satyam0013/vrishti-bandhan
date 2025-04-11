@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About - Vrishti Bandhan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(to right, #e0f7ff, #ffffff);
+      color: #0b1e40;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark {
+      background: #0f172a;
+      color: #f3f4f6;
+    }
+
+    header {
+      background: #0a192f;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #fff;
+    }
+
+    nav {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 16px;
+      background: #1e40af;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      background: #3b82f6;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 10px;
+      right: 16px;
+      background: #1e40af;
+      color: #fff;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      z-index: 999;
+    }
+
+    .section {
+      max-width: 960px;
+      margin: 80px auto;
+      padding: 20px;
+      text-align: center;
+      animation: fadeIn 1s ease-in;
+    }
+
+    .section h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #1e3a8a;
+    }
+
+    .section p {
+      line-height: 1.7;
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .mission-box {
+      margin-top: 50px;
+      background: #f3faff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+
+    body.dark .mission-box {
+      background: #1e293b;
+    }
+
+    footer {
+      text-align: center;
+      background: #0a192f;
+      color: #ccc;
+      padding: 20px;
+      margin-top: 60px;
+      font-size: 0.9rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .section h1 {
+        font-size: 2rem;
+      }
+      .section p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🌙 Theme Toggle -->
+  <!-- <button class="theme-toggle" onclick="toggleTheme()">🌓</button> -->
+
+  <!-- 🔗 Navigation -->
+  <header>
+    <div class="nav-brand">Vrishti Bandhan</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      
+      <a href="login-register.html">Login</a>
+    </nav>
+  </header>
+
+  <!-- 📘 About Content -->
+  <section class="section">
+    <h1>About Vrishti Bandhan</h1>
+    <p>Vrishti Bandhan is a digital bridge between farmers and industries, designed to foster sustainability by enabling agricultural waste reuse. We aim to empower rural communities by giving value to what was once discarded — creating new opportunities, income, and environmental impact.</p>
+
+    <div class="mission-box">
+      <h2>Our Mission</h2>
+      <p>To reduce agricultural waste, support sustainable practices, and enable productive partnerships between those who grow our food and the industries that reuse their byproducts.</p>
+    </div>
+  </section>
+
+  <!-- 🔻 Footer -->
+  <footer>
+    &copy; 2025 Vrishti Bandhan. All rights reserved.
+  </footer>
+
+  <!-- 🌗 Theme Script -->
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle("dark");
+      localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+    }
+
+    window.onload = () => {
+      if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark");
+      }
+    };
+  </script>
+</body>
+</html>

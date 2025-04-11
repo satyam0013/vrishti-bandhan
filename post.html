@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Post Agricultural Waste</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .toggle-theme {
+      position: fixed;
+      top: 12px;
+      right: 20px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      padding: 6px 12px;
+      cursor: pointer;
+      z-index: 999;
+      font-weight: bold;
+      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+    }
+  
+    body.dark {
+      background: #111;
+      color: #eee;
+    }
+  
+    body.dark .navbar {
+      background: #222;
+    }
+  
+    body.dark form,
+    body.dark .waste-card,
+    body.dark .section {
+      background: #1e1e1e;
+      color: #f1f1f1;
+      border-color: #333;
+    }
+  
+    body.dark footer {
+      background: #222;
+      color: #ccc;
+    }
+  
+    body.dark button {
+      background: #444;
+    }
+  </style>
+  
+</head>
+<body>
+  <!-- <div class="toggle-theme" onclick="toggleTheme()">🌓 Toggle Theme</div> -->
+
+  <header>
+    ✍️ Post Waste
+    <!-- <button class="toggle-btn" onclick="toggleTheme()" id="themeToggle">🌙</button> -->
+  </header>
+  <div class="container">
+    <h2>Submit Waste Listing</h2>
+    <form id="postForm" enctype="multipart/form-data">
+      <input type="text" name="type" placeholder="Type of Waste" required />
+      <input type="text" name="location" placeholder="Location" required />
+      <input type="number" name="quantity" placeholder="Quantity (kg)" required />
+      <input type="text" name="contact" placeholder="Contact Info" required />
+      <input type="file" name="image" required />
+      <button type="submit">Post Waste</button>
+    </form>
+  </div>
+  
+  <footer>
+    &copy; 2025 Vrishti Bandhan | Eco Crew | Smart India Hackathon
+  </footer>
+
+  <script src="js/post.js"></script>
+  
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      document.getElementById('themeToggle').textContent = isDark ? '☀️' : '🌙';
+    }
+    window.onload = () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.getElementById('themeToggle').textContent = '☀️';
+      }
+    };
+  </script>
+  <script>
+    const toggleTheme = () => {
+      document.body.classList.toggle("dark");
+      localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+    };
+  
+    window.onload = () => {
+      if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark");
+      }
+    };
+  </script>
+  
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+:root {
+  --primary: #0066ff;
+  --primary-dark: #004ec2;
+  --bg: #f4f7fc;
+  --card-bg: #fff;
+  --text: #222;
+  --border: #e1e5ee;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+h2 {
+  text-align: center;
+  margin-top: 30px;
+  color: var(--primary-dark);
+}
+
+form {
+  max-width: 450px;
+  margin: 30px auto;
+  padding: 24px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  transition: all 0.3s;
+}
+
+input, select, textarea, button {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: border 0.2s;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: var(--primary-dark);
+}
+
+#listings {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 10px;
+}
+
+.waste-card {
+  background: white;
+  border-radius: 10px;
+  padding: 18px;
+  margin: 20px 0;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+  border-left: 5px solid var(--primary);
+}
+
+.waste-card h3 {
+  margin-top: 0;
+  color: var(--primary-dark);
+}
+
+footer {
+  text-align: center;
+  padding: 12px;
+  background: #ddd;
+  font-size: 0.9rem;
+  margin-top: 40px;
+}
+
+.navbar {
+  background: var(--primary);
+  color: white;
+  padding: 14px;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+.fade-in {
+  animation: fadeIn 1s ease-in forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in {
+  animation: fadeIn 1s ease-in forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

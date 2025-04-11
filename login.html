@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login | Vrishti Bandhan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #cceeff, #e0f7ff);
+      color: #0b1e40;
+      transition: background 0.4s, color 0.4s;
+    }
+
+    body.dark {
+      background: #111827;
+      color: #f3f4f6;
+    }
+
+    header {
+      background-color: #0a192f;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: white;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: bold;
+      padding: 10px 18px;
+      border-radius: 8px;
+      background-color: #1e40af;
+      transition: 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #3b82f6;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 10px;
+      right: 16px;
+      z-index: 999;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 20px;
+      background: #1e40af;
+      color: white;
+      cursor: pointer;
+    }
+
+    body.dark .theme-toggle {
+      background: #374151;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 80px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    body.dark .container {
+      background: #1f2937;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 26px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 16px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    body.dark input, body.dark select {
+      background: #374151;
+      color: #fff;
+      border: 1px solid #444;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      background-color: #1e40af;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #3b82f6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 16px;
+      background: #0a192f;
+      color: #ccc;
+      margin-top: 50px;
+      font-size: 0.9rem;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Dark Mode Toggle -->
+<!-- <button class="theme-toggle" onclick="toggleTheme()">🌓</button> -->
+
+<!-- Navbar -->
+<header>
+  <div class="nav-brand">Vrishti Bandhan</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="login.html">Login</a>
+    <a href="browse.html">Browse</a>
+  </nav>
+</header>
+
+<!-- Login Form -->
+<div class="container">
+  <h2>Login</h2>
+  <form id="loginForm">
+    <input type="email" name="email" placeholder="Email" required />
+    <input type="password" name="password" placeholder="Password" required />
+    <select name="role" id="role" required>
+      <option value="" disabled selected>Select Role</option>
+      <option value="farmer">Farmer</option>
+      <option value="company">Company</option>
+    </select>
+    <button type="submit">Login</button>
+  </form>
+</div>
+
+<!-- Footer -->
+<footer>
+  &copy; 2025 Vrishti Bandhan. All rights reserved.
+</footer>
+
+<!-- JS -->
+<script>
+  document.getElementById("loginForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(this).entries());
+
+    const res = await fetch("http://localhost:5000/api/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+
+    const result = await res.json();
+    alert(result.message || result.error);
+
+    if (result.user) {
+      localStorage.setItem("user", JSON.stringify(result.user));
+      window.location.href = result.user.role === "farmer"
+        ? "dashboard-farmer.html"
+        : "dashboard-company.html";
+    }
+  });
+
+  function toggleTheme() {
+    document.body.classList.toggle("dark");
+    localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+  }
+
+  window.onload = () => {
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark");
+    }
+  };
+</script>
+
+</body>
+</html>
